@@ -1,0 +1,27 @@
+{
+  "name": "wechat-purchase-montion-fetcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Backlighting-Neo/wechat-purchase-montion-fetcher.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Backlighting-Neo/wechat-purchase-montion-fetcher/issues"
+  },
+  "homepage": "https://github.com/Backlighting-Neo/wechat-purchase-montion-fetcher#readme",
+  "dependencies": {
+    "anyproxy": "^4.0.12",
+    "file-box": "^0.8.27",
+    "imagemin-gifsicle": "^6.0.1",
+    "imgcat": "^2.3.0",
+    "qrcode-terminal": "^0.12.0",
+    "wechaty": "^0.22.6"
+  }
+}
