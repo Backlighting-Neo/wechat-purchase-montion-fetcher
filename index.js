@@ -17,12 +17,16 @@ const rule = {
     const {response} = responseDetail;
 
     if(hostname === montionHost && response.header['Content-Type'] === 'image/gif') {
+      console.log(`http://${hostname}${path}`);
       const filename = `./temp/${crypto.createHash('md5').update(path).digest('hex')}.gif`;
+      const zipFilename = `./temp/zip_${crypto.createHash('md5').update(path).digest('hex')}.gif`;
       const buffer = response.body;
-      imageminGifsicle()(buffer)
-      fs.writeFileSync(filename, response.body);
+      const zipBuffer = yield imageminGifsicle()(buffer);
+      console.log(zipBuffer);
+      fs.writeFileSync(filename, buffer);
+      fs.writeFileSync(zipFilename, zipBuffer);
       imgcat(filename).then(console.log).catch(console.error);
-      bot.say(FileBox.fromFile(filename));
+      bot.say(FileBox.fromFile(zipFilename));
     }
   },
   *onError() {
@@ -39,7 +43,7 @@ proxyServer.on('ready', () => {
   console.log('代理启动成功，监听在10888端口');
 });
 proxyServer.on('error', console.error);
-// proxyServer.start();
+proxyServer.start();
 
 const bot = new Wechaty();
 bot.on('scan', url => {
